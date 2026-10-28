@@ -55,9 +55,9 @@ def _export_to_excel(xlsx_path: Path, gap_rows: List[PaperGapRow]) -> Path:
         ws.append(headers)
 
         header_fill = PatternFill(
-            start_color="1F4E79", end_color="1F4E79", fill_type="solid"
+            start_color="F2F4F8", end_color="F2F4F8", fill_type="solid"
         )
-        header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+        header_font = Font(name="Calibri", size=11, bold=True, color="000000")
         header_align = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
         thin_side = Side(border_style="thin", color="D9D9D9")

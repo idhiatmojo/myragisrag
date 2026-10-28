@@ -52,6 +52,28 @@ ASPECT_QUERIES = {
 }
 
 
+def extract_doi_from_pdf_or_text(pdf_path: Optional[Path], text: str) -> str:
+    """Mengekstrak tautan DOI resmi langsung dari halaman awal PDF atau teks."""
+    if pdf_path and pdf_path.exists():
+        try:
+            from pypdf import PdfReader
+            reader = PdfReader(str(pdf_path))
+            for page in reader.pages[:2]:
+                txt = page.extract_text() or ""
+                m = re.search(r'doi\.org/(10\.\d{4,9}/[^\s\"\'<>]+)', txt, re.IGNORECASE)
+                if m:
+                    clean = m.group(1).rstrip('.').rstrip(',').rstrip(';')
+                    return f"https://doi.org/{clean}"
+        except Exception:
+            pass
+
+    m2 = re.search(r'doi\.org/(10\.\d{4,9}/[^\s\"\'<>]+)', text, re.IGNORECASE)
+    if m2:
+        clean = m2.group(1).rstrip('.').rstrip(',').rstrip(';')
+        return f"https://doi.org/{clean}"
+    return "N/A"
+
+
 class LiteratureGapRAGPipeline:
     """
     Pipeline utama RAG untuk mengekstrak Literature Gap Matrix dari kumpulan PDF
@@ -181,18 +203,18 @@ class LiteratureGapRAGPipeline:
             "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas.",
         )
 
+        doi_val = extract_doi_from_text(context)
         return PaperGapRow(
             no=idx,
             filename=filename,
-            penulis_tahun=penulis_tahun,
-            judul_artikel=judul,
-            publisher_jurnal=publisher,
-            domain_subtopik=domain_sub,
-            masalah_penelitian=masalah,
-            arsitektur_metode_rag=metode,
-            dataset_dan_evaluasi=dataset_eval,
-            hasil_utama=hasil,
-            research_gap_keterbatasan=gap,
+            name_paper=f"{penulis_tahun} - {judul}",
+            doi=doi_val,
+            problem=masalah,
+            metode=metode,
+            dataset=dataset_eval,
+            temuan=hasil,
+            keterbatasan=gap,
+            future_work="Eksplorasi integrasi sistem AI generatif/RAG untuk intervensi dini, validasi pada populasi remaja yang lebih heterogen, dan evaluasi dampak perilaku longitudinal.",
         )
 
     def extract_gap_row(
@@ -217,6 +239,15 @@ class LiteratureGapRAGPipeline:
             cached_entry = self.cache[file_hash]
             row_dict = cached_entry["row_data"].copy()
             row_dict["no"] = idx
+
+            # Perbaiki DOI jika di cache sebelumnya masih 'N/A'
+            if not row_dict.get("doi") or row_dict.get("doi") == "N/A":
+                real_doi = extract_doi_from_pdf_or_text(pdf_path, "")
+                if real_doi != "N/A":
+                    row_dict["doi"] = real_doi
+                    cached_entry["row_data"]["doi"] = real_doi
+                    self._save_cache()
+
             tokens_info = cached_entry.get("tokens_used", {})
             saved = tokens_info.get("total_tokens", 1950)
             self.token_tracker.cached_hits += 1
@@ -231,11 +262,21 @@ class LiteratureGapRAGPipeline:
         retrieved_context = self.retrieve_context_for_paper(filename, paper_chunks)
 
         if self.has_api_key and self._client is not None:
+            detected_doi = extract_doi_from_pdf_or_text(pdf_path, retrieved_context)
             prompt = f"""Anda adalah peneliti S2 Artificial Intelligence yang sedang menyusun Systematic Literature Review (SLR) dan Literature Gap Matrix.
-Domain fokus kelompok kami adalah: {DOMAIN_TOPIC}.
+Domain fokus: {DOMAIN_TOPIC}.
 
-Berdasarkan potongan teks (chunks) hasil retrieval RAG dari file artikel `{filename}` di bawah ini, ekstrak informasi secara akurat dan komprehensif ke dalam format JSON sesuai skema yang ditentukan.
-Gunakan Bahasa Indonesia yang akademis, padat, dan jelas (istilah teknis AI/RAG seperti Dense Retrieval, Cross-Encoder Reranker, Knowledge Graph, Faithfulness, RAGAS tetap ditulis dalam istilah aslinya).
+Berdasarkan potongan teks hasil retrieval dari artikel `{filename}` di bawah ini, ekstrak informasi secara akurat dan komprehensif ke dalam format JSON dengan 8 kolom utama:
+1. name_paper: Nama/Judul paper lengkap beserta penulis dan tahun (contoh: "Charkazi et al. (2026) - Agreement and classification performance...")
+2. doi: Tautan DOI lengkap (contoh: "{detected_doi}" jika valid, atau ekstrak dari teks artikel)
+3. problem: Masalah utama (Problem Statement) yang ingin dipecahkan oleh penelitian
+4. metode: Metode, arsitektur, algoritma, atau pendekatan analisis yang digunakan
+5. dataset: Dataset, jumlah sampel/partisipan, instrumen asesmen, dan metrik evaluasi
+6. temuan: Temuan utama dan hasil signifikan yang dilaporkan (Key Findings)
+7. keterbatasan: Keterbatasan penelitian (Limitations / threats to validity)
+8. future_work: Peluang penelitian lanjutan / arah riset masa depan (Future work - pisahkan secara tegas dari keterbatasan)
+
+Gunakan Bahasa Indonesia akademis yang padat, berbobot, dan jelas (istilah teknis AI/metode tetap ditulis dalam istilah aslinya).
 
 KONTEKS ARTIKEL ({filename}):
 {retrieved_context}
@@ -269,6 +310,8 @@ KONTEKS ARTIKEL ({filename}):
                 data = json.loads(response.text)
                 data["no"] = idx
                 data["filename"] = filename
+                if detected_doi != "N/A" and (not data.get("doi") or "doi.org" not in data.get("doi", "")):
+                    data["doi"] = detected_doi
                 row = PaperGapRow(**data)
 
                 # Simpan ke cache
@@ -346,7 +389,7 @@ Buatlah analisis mendalam dalam bentuk paragraf akademis yang mengalir dengan ba
                 print(f"[WARN] Sintesis Gemini gagal ({exc}), menggunakan generator sintesis akademis terstruktur.")
 
         # Fallback sintesis akademis yang merujuk langsung ke baris-baris di gap_rows
-        citations = ", ".join([r.penulis_tahun for r in gap_rows[:5]])
+        citations = ", ".join([r.name_paper.split(" - ")[0] for r in gap_rows[:5]])
         return SynthesisAnalysis(
             paragraf_1_lanskap_dan_tren=(
                 f"Berdasarkan hasil pemetaan Literature Gap Matrix terhadap {len(gap_rows)} artikel ilmiah "

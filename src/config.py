@@ -55,32 +55,36 @@ DOMAIN_TOPIC = (
 
 
 class PaperGapRow(BaseModel):
-    """Skema terstruktur (Structured Output) untuk satu baris Literature Gap Matrix."""
+    """
+    Skema terstruktur Literature Gap Matrix sesuai template spreadsheet:
+    Name Paper | DOI | Problem | Metode | Dataset | Temuan | Keterbatasan | Future work
+    """
 
-    no: int = Field(description="Nomor urut artikel")
-    filename: str = Field(description="Nama file PDF sumber")
-    penulis_tahun: str = Field(description="Nama Penulis dan Tahun Terbit (contoh: Zhang et al., 2024)")
-    judul_artikel: str = Field(description="Judul lengkap artikel ilmiah")
-    publisher_jurnal: str = Field(
-        description="Nama Publisher / Jurnal (contoh: Elsevier / IEEE / Springer / Taylor & Francis / SAGE / JMIR)"
+    no: int = Field(default=1, description="Nomor urut artikel")
+    filename: str = Field(default="", description="Nama file PDF sumber")
+    name_paper: str = Field(
+        description="Nama paper / judul lengkap artikel ilmiah beserta penulis dan tahun (contoh: Charkazi et al. (2026) - Agreement and classification performance...)"
     )
-    domain_subtopik: str = Field(
-        description="Fokus sub-domain (contoh: Edukasi Kesehatan Remaja - Kecanduan Smartphone / Berhenti Merokok)"
+    doi: str = Field(
+        description="Digital Object Identifier (DOI) artikel, contoh: https://doi.org/10.1016/j.abrep.2026.100740"
     )
-    masalah_penelitian: str = Field(
-        description="Masalah utama (Problem Statement) yang ingin diselesaikan oleh paper tersebut"
+    problem: str = Field(
+        description="Masalah utama (Problem Statement) yang ingin diselesaikan oleh penelitian"
     )
-    arsitektur_metode_rag: str = Field(
-        description="Komponen & Arsitektur RAG yang digunakan (Retriever, Embedding, Vector DB, LLM, Knowledge Graph/Reranker)"
+    metode: str = Field(
+        description="Metode, arsitektur, algoritma, atau pendekatan analisis yang digunakan"
     )
-    dataset_dan_evaluasi: str = Field(
-        description="Dataset yang digunakan, partisipan (remaja/siswa), serta metrik evaluasi (RAGAS, Recall@K, F1, klinis/edukasi)"
+    dataset: str = Field(
+        description="Dataset yang digunakan, jumlah partisipan/sampel, instrumen asesmen, dan metrik evaluasi"
     )
-    hasil_utama: str = Field(
-        description="Temuan utama dan performa sistem RAG yang dilaporkan"
+    temuan: str = Field(
+        description="Temuan utama dan hasil signifikan yang dilaporkan (Key Findings)"
     )
-    research_gap_keterbatasan: str = Field(
-        description="Keterbatasan penelitian (Limitations) dan peluang riset lanjutan (Future Work / Research Gap)"
+    keterbatasan: str = Field(
+        description="Keterbatasan penelitian (Limitations / threats to validity)"
+    )
+    future_work: str = Field(
+        description="Peluang penelitian lanjutan (Future work / research directions)"
     )
 
 

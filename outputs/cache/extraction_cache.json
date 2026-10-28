@@ -4,329 +4,314 @@
     "row_data": {
       "no": 1,
       "filename": "Agreement-and-classification-performance-of-the-heaviness-of-_2026_Addictive.pdf",
-      "penulis_tahun": "Charkazi et al., 2026",
-      "judul_artikel": "Agreement and classification performance of the heaviness of smoking index (HSI) compared with the Fagerström test for cigarette dependence (FTCD): A subgroup analysis",
-      "publisher_jurnal": "Addictive Behaviors",
-      "domain_subtopik": "Kesehatan Remaja dan Dewasa - Intervensi Berhenti Merokok dan Adiksi Nikotin",
-      "masalah_penelitian": "Kebutuhan akan alat skrining adiksi nikotin yang singkat, reliabel, dan efisien di lingkungan klinis untuk mengidentifikasi perokok dengan tingkat adiksi tinggi guna memfasilitasi intervensi berhenti merokok yang tepat sasaran.",
-      "arsitektur_metode_rag": "Tidak menggunakan arsitektur RAG (penelitian klinis/epidemiologis). Metode analisis data mencakup Pearson correlation, ICC, Cohen's Kappa, ROC analysis, dan Bland–Altman.",
-      "dataset_dan_evaluasi": "Sampel perokok di Iran dengan berbagai karakteristik demografis dan perilaku. Metrik evaluasi meliputi AUC (Area Under the Curve), sensitivitas, spesifisitas, dan konsistensi klasifikasi antara HSI dan FTCD.",
-      "hasil_utama": "Ditemukan korelasi yang sangat tinggi dan kesepakatan (agreement) yang sangat baik antara HSI dan FTCD. HSI terbukti sebagai instrumen yang konsisten dalam memeringkat tingkat keparahan adiksi nikotin.",
-      "research_gap_keterbatasan": "Keterbatasan meliputi desain cross-sectional, penggunaan convenience sampling, dan adanya criterion contamination karena HSI merupakan turunan dari item FTCD. Peluang riset lanjutan mencakup validasi HSI terhadap biomarker objektif (seperti CO atau kotinin urin) dan pengembangan instrumen adiksi multi-produk untuk pengguna vaping/hookah."
+      "name_paper": "Charkazi et al. (2026) - Agreement and classification performance of the heaviness of smoking index (HSI) compared with the Fagerström test for cigarette dependence (FTCD): A subgroup analysis",
+      "doi": "https://doi.org/10.1016/j.abrep.2026.100740",
+      "problem": "Kebutuhan akan instrumen skrining kecanduan nikotin yang singkat, reliabel, dan efisien di lingkungan klinis untuk mengidentifikasi perokok dengan tingkat kecanduan tinggi, mengingat keterbatasan instrumen yang ada dalam memberikan hasil yang konsisten di berbagai subgrup perokok.",
+      "metode": "Analisis komparatif menggunakan Pearson correlation, Intraclass Correlation Coefficient (ICC), Cohen's Kappa, Receiver Operating Characteristic (ROC) analysis, dan Bland–Altman plots untuk mengevaluasi kesepakatan (agreement) dan performa klasifikasi antara HSI dan FTCD.",
+      "dataset": "Sampel perokok di Iran dengan karakteristik demografis dan perilaku yang beragam; instrumen asesmen meliputi Fagerström Test for Cigarette Dependence (FTCD) dan Heaviness of Smoking Index (HSI); metrik evaluasi mencakup AUC, sensitivitas, spesifisitas, dan koefisien kesepakatan statistik.",
+      "temuan": "Ditemukan korelasi yang sangat tinggi dan kesepakatan yang sangat baik antara HSI dan FTCD dalam menentukan tingkat keparahan kecanduan nikotin. Studi ini juga mengidentifikasi titik potong (cut-off) optimal untuk HSI (≥3) sebagai alternatif praktis untuk skrining.",
+      "keterbatasan": "Desain studi cross-sectional yang membatasi inferensi kausal, potensi bias recall dan social desirability akibat data self-reported, penggunaan convenience sampling yang membatasi generalisasi, serta adanya kontaminasi kriteria karena HSI merupakan turunan dari item FTCD.",
+      "future_work": "Penelitian selanjutnya disarankan untuk memvalidasi HSI terhadap kriteria independen seperti biomarker (CO ekspirasi atau kotinin urin), mengevaluasi performa instrumen terhadap hasil perilaku (seperti upaya berhenti merokok dan abstinensi berkelanjutan), serta mengembangkan instrumen kecanduan multi-produk yang lebih akurat untuk pengguna tembakau ganda (dual users) atau poli-tembakau."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 3577,
+      "candidates_tokens": 546,
+      "total_tokens": 4123
     },
-    "cached_at": "2026-10-28T17:53:37.760350"
+    "cached_at": "2026-10-28T18:52:41.770181"
   },
   "de4bf55b09fe1b491f558843790a277cd8885fe3d26850d8d781be0cd1c96ae5": {
     "filename": "Alcohol-and-cannabis-use-and-Co-use-among-U-S--sexual-minori_2026_Addictive-.pdf",
     "row_data": {
       "no": 2,
       "filename": "Alcohol-and-cannabis-use-and-Co-use-among-U-S--sexual-minori_2026_Addictive-.pdf",
-      "penulis_tahun": "Schilt-Solberg et al., 2026",
-      "judul_artikel": "Alcohol and cannabis use and Co-use among U.S. sexual minority young adults: Findings from the 2019–2021 monitoring the future longitudinal panel data",
-      "publisher_jurnal": "Addictive Behaviors Reports",
-      "domain_subtopik": "Kesehatan Remaja dan Dewasa Muda - Intervensi Penyalahgunaan Zat (Alkohol & Cannabis)",
-      "masalah_penelitian": "Kurangnya pemahaman mengenai disparitas penggunaan zat (alkohol dan cannabis) serta pola co-use pada kelompok minoritas seksual (SM) selama masa dewasa muda, serta bagaimana stres minoritas berkontribusi terhadap perilaku tersebut.",
-      "arsitektur_metode_rag": "Tidak menggunakan arsitektur RAG (Studi ini merupakan penelitian observasional longitudinal berbasis survei statistik).",
-      "dataset_dan_evaluasi": "Dataset: Monitoring the Future (MTF) Longitudinal Panel (2019–2021), N = 12.173 partisipan. Evaluasi: Analisis statistik regresi longitudinal untuk mengukur prevalensi dan disparitas penggunaan zat antar subkelompok identitas seksual.",
-      "hasil_utama": "Ditemukan bahwa risiko penyalahgunaan zat terkonsentrasi pada subkelompok spesifik, terutama perempuan biseksual dan laki-laki gay. Kerangka kerja interseksional lebih efektif menjelaskan distribusi disparitas dibandingkan teori stres minoritas tunggal.",
-      "research_gap_keterbatasan": "Keterbatasan mencakup penggunaan ukuran seks biner yang tidak menangkap identitas gender secara penuh, sampel yang didominasi etnis kulit putih, dan mekanisme psikososial (seperti coping atau dukungan sosial) yang masih bersifat hipotesis. Peluang riset lanjutan mencakup pengujian mediator psikososial dan analisis disparitas pada subkelompok ras/etnis yang lebih beragam."
+      "name_paper": "Schilt-Solberg, M. A., Veliz, P. T., Jardine, J., Pang, Y. C., McCabe, S. E., Evans-Polce, R., & Patrick, M. E. (2026) - Alcohol and cannabis use and Co-use among U.S. sexual minority young adults: Findings from the 2019–2021 monitoring the future longitudinal panel data",
+      "doi": "https://doi.org/10.1016/j.abrep.2026.100732",
+      "problem": "Kurangnya pemahaman mengenai kapan disparitas penggunaan zat (alkohol dan ganja) muncul dan bagaimana perkembangannya selama masa dewasa muda, khususnya pada kelompok minoritas seksual (SM) yang sering kali diagregasi sehingga menutupi perbedaan risiko antar subkelompok.",
+      "metode": "Analisis longitudinal menggunakan data Monitoring the Future (MTF) dengan pendekatan statistik untuk mengevaluasi prevalensi penggunaan zat dan ko-penggunaan (co-use) berdasarkan identitas seksual.",
+      "dataset": "Data panel longitudinal Monitoring the Future (MTF) tahun 2019–2021 dengan total 12.173 responden (usia 19–30 tahun), di mana 14,9% di antaranya mengidentifikasi diri sebagai minoritas seksual (SM).",
+      "temuan": "Terdapat disparitas substansial dalam penggunaan zat yang terkonsentrasi pada subkelompok tertentu, terutama perempuan biseksual dan laki-laki gay. Kerangka kerja interseksional lebih efektif menjelaskan pola ini dibandingkan teori stres minoritas konvensional yang bersifat umum.",
+      "keterbatasan": "Penggunaan ukuran seks biner yang tidak menangkap identitas gender, keterbatasan dalam menguji mediator secara empiris (seperti dukungan sosial atau diskriminasi), serta sampel yang didominasi oleh populasi kulit putih.",
+      "future_work": "Penelitian lanjutan perlu menguji mediator spesifik seperti dukungan sosial, mekanisme coping, penyembunyian identitas, dan penerimaan komunitas, serta mengeksplorasi bagaimana disparitas identitas seksual bervariasi di seluruh subkelompok ras/etnis dengan desain survei yang memiliki kekuatan statistik (power) lebih memadai."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4984,
+      "candidates_tokens": 555,
+      "total_tokens": 5539
     },
-    "cached_at": "2026-10-28T17:53:37.762938"
+    "cached_at": "2026-10-28T18:52:50.750599"
   },
   "f5ccdc519d312d54f951cea3ee12dd1d9c56d4b9fe1019b52df6bcbc8e918a18": {
     "filename": "Artificial-intelligence--job-seeker--and-career-trajec_2025_Computers-and-Ed.pdf",
     "row_data": {
       "no": 3,
       "filename": "Artificial-intelligence--job-seeker--and-career-trajec_2025_Computers-and-Ed.pdf",
-      "penulis_tahun": "Maulana et al., 2025",
-      "judul_artikel": "Artificial intelligence, job seeker, and career trajectory: How AI-based learning experiences affect commitment of fresh graduates to be an accountant?",
-      "publisher_jurnal": "Computers and Education: Artificial Intelligence",
-      "domain_subtopik": "Edukasi Tinggi - Integrasi AI dalam Kurikulum Akuntansi dan Komitmen Karier",
-      "masalah_penelitian": "Kurangnya pemahaman mengenai bagaimana pengalaman belajar berbasis AI dalam kurikulum pendidikan tinggi memengaruhi kesiapan dan komitmen lulusan baru untuk berkarier di bidang akuntansi.",
-      "arsitektur_metode_rag": "Tidak menggunakan arsitektur RAG; penelitian ini menggunakan metode kuantitatif survei dengan analisis Partial Least Squares Structural Equation Modeling (PLS-SEM).",
-      "dataset_dan_evaluasi": "Dataset terdiri dari 698 responden (lulusan baru/mahasiswa akuntansi di Indonesia). Evaluasi menggunakan PLS-SEM untuk menguji validitas (HTMT ratio, VIF) dan reliabilitas model struktural.",
-      "hasil_utama": "Pengalaman belajar berbasis AI secara signifikan memengaruhi efikasi diri AI (AI self-efficacy) dan komitmen karier lulusan baru, dengan validasi kerangka kerja SCCT dan SDT.",
-      "research_gap_keterbatasan": "Penelitian terbatas pada konteks satu negara (Indonesia), sehingga generalisasi temuan ke konteks sosio-ekonomi dan budaya lain masih terbatas; diperlukan studi lintas negara di masa depan."
+      "name_paper": "Maulana, A., Fenitra, R. M., Sutrisno, S., & Kurniawan (2025) - Artificial intelligence, job seeker, and career trajectory: How AI-based learning experiences affect commitment of fresh graduates to be an accountant?",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100413",
+      "problem": "Kurangnya pemahaman mengenai bagaimana integrasi pengalaman pembelajaran berbasis AI dalam kurikulum pendidikan tinggi memengaruhi kesiapan dan komitmen lulusan baru akuntansi dalam menghadapi perubahan peran profesional akibat adopsi AI.",
+      "metode": "Pendekatan kuantitatif menggunakan Partial Least Squares Structural Equation Modeling (PLS-SEM) dengan perangkat lunak SmartPLS untuk menguji model konseptual yang mengintegrasikan Social Cognitive Career Theory (SCCT) dan Self-Determination Theory (SDT).",
+      "dataset": "Sampel sebanyak 698 lulusan baru akuntansi (didominasi Gen Z, 81,2% perempuan, 96,1% program sarjana) di Indonesia. Instrumen berupa kuesioner dengan 40 item yang diukur menggunakan metrik validitas (HTMT, VIF) dan reliabilitas (Composite Reliability), serta evaluasi model fit (SRMR, NFI, R-squared).",
+      "temuan": "Pengalaman pembelajaran berbasis AI secara signifikan memengaruhi kompetensi AI dan efikasi diri AI lulusan, yang pada gilirannya berdampak positif terhadap komitmen karier mereka sebagai akuntan. Model ini berhasil memvalidasi integrasi SCCT dan SDT dalam konteks pendidikan akuntansi.",
+      "keterbatasan": "Penelitian terbatas pada data dari satu negara (Indonesia) yang membatasi generalisasi temuan ke konteks global, serta adanya ketidakseimbangan gender dalam sampel (dominasi perempuan) dan kecenderungan sampel pada mahasiswa berprestasi akademik tinggi.",
+      "future_work": "Penelitian selanjutnya disarankan untuk mempertimbangkan faktor situasional dan kontekstual lainnya seperti perbedaan sosio-ekonomi dan budaya antarnegara, serta melakukan studi longitudinal untuk melihat dampak jangka panjang pengalaman pembelajaran AI terhadap lintasan karier profesional."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4389,
+      "candidates_tokens": 530,
+      "total_tokens": 4919
     },
-    "cached_at": "2026-10-28T17:53:37.776115"
+    "cached_at": "2026-10-28T18:52:59.435202"
   },
   "56f53b4e395543ad736b2ff079f12838a6fc1a5a3155c4fe2e13bc6523cb7d3b": {
     "filename": "Association-between-problematic-internet-use-and-depressive-s_2026_Addictive.pdf",
     "row_data": {
       "no": 4,
       "filename": "Association-between-problematic-internet-use-and-depressive-s_2026_Addictive.pdf",
-      "penulis_tahun": "Rasoamiadana Volanirina et al., 2026",
-      "judul_artikel": "Association between problematic internet use and depressive symptoms among individuals at high-risk of cannabis use disorder: a cross-sectional study in Quebec (Canada)",
-      "publisher_jurnal": "Addictive Behaviors Reports",
-      "domain_subtopik": "Kesehatan Remaja dan Dewasa Muda - Kecanduan Internet (PIU) dan Komorbiditas Kesehatan Mental",
-      "masalah_penelitian": "Kurangnya pemahaman mengenai hubungan antara Problematic Internet Use (PIU) dan gejala depresi pada populasi yang memiliki risiko tinggi terhadap Cannabis Use Disorder (CUD).",
-      "arsitektur_metode_rag": "Tidak menggunakan arsitektur RAG (Studi observasional berbasis analisis data sekunder menggunakan model regresi logistik biner multivariat).",
-      "dataset_dan_evaluasi": "Dataset sekunder dari 874 partisipan (usia 18+ tahun) di Quebec, Kanada, yang memiliki skor CAST >= 7. Evaluasi menggunakan instrumen tervalidasi (CAST, GAD-7) dan analisis statistik (chi-square, Mann-Whitney U, regresi logistik biner).",
-      "hasil_utama": "Terdapat asosiasi signifikan antara PIU dan gejala depresi moderat hingga berat (OR = 2.19; 95% CI: 1.15–4.19; p = 0.018) setelah mengontrol variabel sosiodemografis dan penggunaan zat.",
-      "research_gap_keterbatasan": "Keterbatasan meliputi penggunaan data self-reported yang rentan bias, ketiadaan diagnosis klinis formal untuk PIU/CUD, dan generalisasi yang terbatas pada konteks sosio-kultural Quebec. Peluang riset lanjutan mencakup studi longitudinal dan eksplorasi di berbagai latar geografis/budaya."
+      "name_paper": "Rasoamiadana Volanirina, R., Dufour, I., Hudon, C., Carrier, N., Mu˜noz G´omez, N., & Brodeur, M. (2026) - Association between problematic internet use and depressive symptoms among individuals at high-risk of cannabis use disorder: a cross-sectional study in Quebec (Canada)",
+      "doi": "https://doi.org/10.1016/j.abrep.2026.100730",
+      "problem": "Kurangnya pemahaman mengenai hubungan antara Problematic Internet Use (PIU) dan gejala depresi pada populasi spesifik yang berisiko tinggi mengalami gangguan penggunaan ganja (Cannabis Use Disorder), terutama dalam konteks legalisasi ganja.",
+      "metode": "Studi deskriptif korelasional dengan analisis data sekunder menggunakan model regresi logistik biner multivariat untuk menguji hubungan antara PIU dan gejala depresi setelah mengontrol variabel perancu (sosiodemografi, penggunaan zat, dan indikator kesehatan mental).",
+      "dataset": "Sebanyak 874 partisipan dewasa di Quebec, Kanada, yang merupakan pengguna ganja rekreasional (skor CAST ≥ 7). Instrumen mencakup kuesioner daring tervalidasi (termasuk GAD-7 untuk kecemasan). Metrik evaluasi meliputi Odds Ratio (OR), 95% CI, dan Nagelkerke R².",
+      "temuan": "Terdapat hubungan signifikan antara PIU dan gejala depresi sedang hingga berat (OR = 2.19; 95% CI: 1.15–4.19; p = 0.018). Individu dengan PIU menunjukkan karakteristik sosiodemografi dan psikiatri yang lebih buruk, termasuk skor kecemasan yang lebih tinggi dibandingkan kelompok non-PIU.",
+      "keterbatasan": "Data bersifat self-reported yang rentan terhadap bias informasi (recall error atau social desirability). Selain itu, tidak adanya diagnosis klinis formal untuk PIU maupun gangguan penggunaan ganja membatasi presisi identifikasi kasus.",
+      "future_work": "Diperlukan studi longitudinal untuk memahami kausalitas hubungan antara PIU dan depresi, serta penelitian lebih lanjut di berbagai latar belakang budaya dan geografis untuk meningkatkan generalisasi temuan di luar konteks Quebec."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4155,
+      "candidates_tokens": 563,
+      "total_tokens": 4718
     },
-    "cached_at": "2026-10-28T17:53:37.783288"
+    "cached_at": "2026-10-28T18:53:05.466407"
   },
   "3521cc0a72a435f5422e7bf98b7b471ceed2fb9386699be86ff350ff3c5b0388": {
     "filename": "Automatic-item-generation-in-various-STEM-subj_2025_Computers-and-Education-.pdf",
     "row_data": {
       "no": 5,
       "filename": "Automatic-item-generation-in-various-STEM-subj_2025_Computers-and-Education-.pdf",
-      "penulis_tahun": "Chan et al., 2025",
-      "judul_artikel": "Automatic item generation in various STEM subjects using large language model prompting",
-      "publisher_jurnal": "Elsevier / Computers and Education: Artificial Intelligence",
-      "domain_subtopik": "Edukasi STEM - Automatic Item Generation (AIG) untuk Penilaian Akademik",
-      "masalah_penelitian": "Kebutuhan akan metode efisien untuk menghasilkan soal penilaian berkualitas tinggi di bidang STEM serta keterbatasan LLM dalam akurasi konseptual dan logika pengerjaan (multistep reasoning) yang rentan terhadap halusinasi.",
-      "arsitektur_metode_rag": "Penggunaan LLM (GPT-3.5 dan GPT-4) dengan pendekatan prompting: Standard Prompting (SP), Chain-of-Thought (CoT), dan CoT-CL (Chain-of-Thought with Clarification).",
-      "dataset_dan_evaluasi": "Dataset soal STEM (Kimia, Fisika, Matematika) tingkat pra-universitas. Evaluasi dilakukan oleh pakar subjek menggunakan rubrik (skala 0-2) berdasarkan metrik: kejelasan pertanyaan, akurasi konteks, akurasi jawaban akhir, dan kualitas pengerjaan.",
-      "hasil_utama": "GPT-4 menunjukkan performa unggul dibandingkan GPT-3.5. Pendekatan CoT efektif dalam menghasilkan langkah-langkah pengerjaan yang logis, namun masih terdapat tantangan dalam akurasi perhitungan matematis pada soal kompleks.",
-      "research_gap_keterbatasan": "Penelitian ini terbatas pada evaluasi manual oleh pakar dan belum mengintegrasikan mekanisme RAG berbasis basis data eksternal untuk memitigasi halusinasi. Peluang riset lanjutan mencakup otomatisasi evaluasi menggunakan metrik RAGAS dan pengembangan sistem RAG yang lebih robust untuk soal STEM multistep."
+      "name_paper": "Chan, K. W., Ali, F., Park, J., Sham, K. S. B., Tan, E. Y. T., Chong, F. W. C., Qian, K., & Sze, G. K. (2025) - Automatic item generation in various STEM subjects using large language model prompting",
+      "doi": "https://doi.org/10.1016/j.caeai.2024.100344",
+      "problem": "Kurangnya investigasi sistematis mengenai kemampuan Large Language Models (LLMs) dalam menghasilkan soal dan jawaban berkualitas tinggi untuk mata pelajaran STEM (Sains, Teknologi, Teknik, Matematika) yang memerlukan pemahaman konseptual dan penyelesaian masalah bertahap, serta kecenderungan LLM untuk berhalusinasi.",
+      "metode": "Eksperimen komparatif menggunakan dua model LLM (GPT-3.5 dan GPT-4) dengan tiga pendekatan prompting (Standard Prompting/SP, Chain-of-Thought/CoT, dan CoT-CL). Analisis dilakukan menggunakan statistik deskriptif dan one-way ANOVA untuk mengevaluasi aspek kejelasan, akurasi konteks, akurasi jawaban akhir, dan kualitas langkah pengerjaan.",
+      "dataset": "Kumpulan soal dan jawaban yang dihasilkan secara otomatis untuk mata pelajaran kimia, fisika, dan matematika tingkat pra-universitas. Evaluasi dilakukan oleh pakar subjek menggunakan rubrik penilaian dengan skala 0-2 berdasarkan metrik kejelasan, akurasi konteks, akurasi jawaban akhir, dan kualitas pengerjaan.",
+      "temuan": "GPT-4 menunjukkan performa yang lebih unggul dibandingkan GPT-3.5. Pendekatan Chain-of-Thought (CoT) terbukti efektif dalam menghasilkan langkah-langkah pengerjaan yang logis untuk soal-soal STEM yang kompleks, meskipun akurasi perhitungan akhir masih menjadi tantangan.",
+      "keterbatasan": "Penelitian ini terbatas pada mata pelajaran STEM tingkat pra-universitas dan masih menemukan adanya kesalahan dalam perhitungan matematis pada jawaban yang dihasilkan, serta keterbatasan dalam menjamin akurasi jawaban akhir pada soal-soal yang memerlukan penalaran bertahap.",
+      "future_work": "Penelitian selanjutnya disarankan untuk mengeksplorasi teknik prompting yang lebih canggih guna meningkatkan akurasi perhitungan numerik, memperluas cakupan subjek ke tingkat pendidikan yang lebih tinggi, serta mengintegrasikan mekanisme verifikasi eksternal untuk mengurangi halusinasi pada jawaban yang dihasilkan."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 3648,
+      "candidates_tokens": 598,
+      "total_tokens": 4246
     },
-    "cached_at": "2026-10-28T17:53:37.792966"
+    "cached_at": "2026-10-28T18:53:08.345965"
   },
   "e314e5315df58ef88fdd2e84d671d6997fb810b83772d20ddd9113ebccbb4347": {
     "filename": "Bidirectional-perspectives-on-internet-related-family-communic_2026_Addictiv.pdf",
     "row_data": {
       "no": 6,
       "filename": "Bidirectional-perspectives-on-internet-related-family-communic_2026_Addictiv.pdf",
-      "penulis_tahun": "Morita, 2026",
-      "judul_artikel": "Bidirectional perspectives on internet-related family communication: Development and validation of the parent–child internet communication scale (PCICS) and associations with problematic internet use",
-      "publisher_jurnal": "Addictive Behaviors",
-      "domain_subtopik": "Edukasi Kesehatan Remaja - Kecanduan Smartphone/Internet",
-      "masalah_penelitian": "Kurangnya instrumen yang mampu menangkap persepsi dyadic (dua arah) antara orang tua dan remaja mengenai komunikasi terkait penggunaan internet, yang sering kali menjadi pemicu siklus kecanduan internet (Problematic Internet Use/PIU).",
-      "arsitektur_metode_rag": "Tidak menggunakan arsitektur RAG (penelitian ini berfokus pada pengembangan skala psikometrik/psikologi).",
-      "dataset_dan_evaluasi": "Dataset terdiri dari 824 pasang orang tua-remaja di Jepang. Evaluasi menggunakan Confirmatory Factor Analysis (CFA) dengan metrik fit model: CFI, TLI, RMSEA, dan SRMR.",
-      "hasil_utama": "Berhasil mengembangkan dan memvalidasi Parent–Child Internet Communication Scale (PCICS) yang memiliki struktur multidimensi. Ditemukan bahwa persepsi orang tua mengenai penerimaan (acceptance) tidak selalu selaras dengan pengalaman remaja, yang mengindikasikan adanya 'perception gap' dalam komunikasi keluarga.",
-      "research_gap_keterbatasan": "Penelitian bersifat cross-sectional sehingga tidak dapat menentukan kausalitas. Belum ada data normatif atau clinical cutoff scores. Keterbatasan generalisasi karena sampel hanya dari Jepang. Peluang riset lanjutan mencakup analisis discrepancy scores (gap antara persepsi orang tua dan anak) dan penggunaan desain longitudinal."
+      "name_paper": "Morita, N. (2026) - Bidirectional perspectives on internet-related family communication: Development and validation of the parent–child internet communication scale (PCICS) and associations with problematic internet use",
+      "doi": "https://doi.org/10.1016/j.addbeh.2025.108369",
+      "problem": "Kurangnya instrumen yang mampu menangkap persepsi dyadic (dua arah) antara orang tua dan remaja mengenai komunikasi terkait penggunaan internet, serta perlunya memahami bagaimana kesenjangan persepsi tersebut berkontribusi pada problematic internet use (PIU) pada remaja.",
+      "metode": "Pengembangan dan validasi skala (scale development) menggunakan Confirmatory Factor Analysis (CFA) untuk menguji struktur multidimensi, serta analisis validitas konkuren melalui korelasi dengan PIU dan kelekatan (attachment) orang tua.",
+      "dataset": "824 pasang orang tua-remaja di Jepang yang dikumpulkan melalui survei berbasis web. Metrik evaluasi mencakup indeks kecocokan model (CFI, TLI, RMSEA, SRMR).",
+      "temuan": "PCICS terbukti sebagai instrumen yang reliabel dan valid. Ditemukan bahwa penerimaan orang tua (parental acceptance) dan rendahnya hambatan untuk berkonsultasi merupakan elemen inti komunikasi yang mendukung. Terdapat bukti adanya kesenjangan persepsi (perception gap) antara orang tua dan remaja yang memengaruhi dinamika penggunaan internet.",
+      "keterbatasan": "Desain penelitian bersifat cross-sectional sehingga tidak dapat menentukan kausalitas; sampel terbatas pada populasi Jepang; ketergantungan pada data self-report yang rentan terhadap bias (social desirability dan recall bias); serta tidak adanya metode kualitatif formal dalam tahap awal pengembangan item.",
+      "future_work": "Diperlukan penelitian longitudinal untuk menguji arah kausalitas hubungan; analisis empiris terhadap skor diskrepansi (discrepancy scores) antara orang tua dan anak; serta pengujian generalisasi skala pada konteks budaya dan tahap perkembangan yang berbeda."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 3558,
+      "candidates_tokens": 502,
+      "total_tokens": 4060
     },
-    "cached_at": "2026-10-28T17:53:37.796049"
+    "cached_at": "2026-10-28T18:53:11.623066"
   },
   "6dada9180a1c40ec856809ecae848e3f8fab6d365e8044122820efa90b8d058d": {
     "filename": "Enhancing-data-analysis-and-programming-skills-throu_2025_Computers-and-Educ.pdf",
     "row_data": {
       "no": 7,
       "filename": "Enhancing-data-analysis-and-programming-skills-throu_2025_Computers-and-Educ.pdf",
-      "penulis_tahun": "Garg et al., 2025",
-      "judul_artikel": "Enhancing data analysis and programming skills through structured prompt training: The impact of generative AI in engineering education",
-      "publisher_jurnal": "Elsevier (Computers and Education: Artificial Intelligence)",
-      "domain_subtopik": "Edukasi Teknik - Peningkatan Keterampilan Pemrograman dan Analisis Data melalui Generative AI",
-      "masalah_penelitian": "Kurangnya efektivitas interaksi antara mahasiswa dan model AI (LLM) dalam tugas pemrograman karena respons AI yang seringkali tidak relevan secara kontekstual.",
-      "arsitektur_metode_rag": "Penelitian ini berfokus pada teknik prompt engineering (Few-shot, Chain-of-Thought, Auto-CoT, LogiCoT) sebagai metode untuk mengoptimalkan output LLM (seperti GPT, Claude, Gemini) dalam konteks edukasi.",
-      "dataset_dan_evaluasi": "Dataset berupa data dummy penggunaan tablet oleh siswa (10.000+ observasi per bulan). Evaluasi menggunakan Hake Gain analysis, Spearman’s correlation, dan System Usability Scale (SUS) pada 121 mahasiswa teknik.",
-      "hasil_utama": "Pelatihan prompt terstruktur secara signifikan meningkatkan hasil belajar, keterlibatan, dan kualitas interaksi AI. Terdapat korelasi positif yang kuat antara pengetahuan pemrograman dan performa tugas analisis data.",
-      "research_gap_keterbatasan": "Keterbatasan meliputi ketidakseimbangan gender, durasi studi yang singkat, dan kurangnya analisis interaksi mendalam. Peluang riset lanjutan mencakup studi longitudinal, analisis multi-modal, dan pengembangan sistem analisis interaksi real-time."
+      "name_paper": "Garg, A., Soodhani, K. N., & Rajendran, R. (2025) - Enhancing data analysis and programming skills through structured prompt training: The impact of generative AI in engineering education",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100380",
+      "problem": "Kurangnya efektivitas penggunaan Generative AI dalam pendidikan karena respons yang sering kali tidak relevan secara kontekstual, serta perlunya peningkatan keterampilan pemrograman dan analisis data mahasiswa melalui interaksi AI yang terstruktur.",
+      "metode": "Eksperimen komparatif dengan pemberian pelatihan prompt terstruktur (structured prompt training) yang mencakup teknik seperti few-shot prompting, Chain-of-Thought (CoT), dan Logical Chain-of-Thought (LogiCoT) untuk memandu interaksi mahasiswa dengan LLM.",
+      "dataset": "Dataset dummy penggunaan tablet oleh siswa sekolah (September-Januari) dengan lebih dari 10.000 observasi per bulan. Partisipan terdiri dari 157 mahasiswa tahun pertama teknik (121 menyelesaikan seluruh rangkaian tes). Instrumen evaluasi meliputi skor tugas analisis data, Hake Gain (pre-test/post-test), dan System Usability Scale (SUS).",
+      "temuan": "Pelatihan prompt terstruktur secara signifikan meningkatkan hasil pembelajaran, keterlibatan, dan kualitas interaksi AI. Terdapat korelasi positif yang kuat antara pengetahuan pemrograman dan kinerja tugas analisis data di semua kelompok eksperimen.",
+      "keterbatasan": "Ketidakseimbangan gender di antara partisipan, durasi studi yang singkat sehingga tidak dapat menilai dampak jangka panjang, serta kurangnya analisis interaksi mendalam dan kuantifikasi keterampilan prompting selama eksekusi tugas.",
+      "future_work": "Melakukan studi longitudinal untuk mengevaluasi dampak berkelanjutan, meningkatkan representasi gender, menerapkan analisis multi-modal (visual dan auditori) untuk memahami proses kognitif, serta mengembangkan sistem analisis interaksi canggih untuk umpan balik real-time yang dipersonalisasi."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 3707,
+      "candidates_tokens": 508,
+      "total_tokens": 4215
     },
-    "cached_at": "2026-10-28T17:53:37.804963"
+    "cached_at": "2026-10-28T18:53:14.357759"
   },
   "99ec8af1abd675e4ea175a75ea95ecc37a5f999258f74d08ea157baa2ee9bf5c": {
     "filename": "Exploring-students--experience-of-ChatG_2025_Computers-and-Education--Artifi.pdf",
     "row_data": {
       "no": 8,
       "filename": "Exploring-students--experience-of-ChatG_2025_Computers-and-Education--Artifi.pdf",
-      "penulis_tahun": "Valeri et al., 2025",
-      "judul_artikel": "Exploring students’ experience of ChatGPT in STEM education",
-      "publisher_jurnal": "Elsevier (Computers and Education: Artificial Intelligence)",
-      "domain_subtopik": "Edukasi STEM - Penggunaan AI/ChatGPT di tingkat pendidikan menengah atas (upper secondary education)",
-      "masalah_penelitian": "Kurangnya penelitian mengenai penggunaan ChatGPT dalam mata pelajaran STEM di tingkat pendidikan menengah atas, serta perlunya memahami bagaimana siswa menggunakan dan mempersepsikan teknologi LLM dalam proses belajar mereka.",
-      "arsitektur_metode_rag": "Penelitian ini bersifat eksploratif menggunakan pendekatan mixed methods (survei dan wawancara semi-terstruktur). Meskipun tidak membangun sistem RAG teknis, penelitian ini menganalisis interaksi pengguna dengan LLM (ChatGPT, Gemini, Copilot) sebagai sistem retrieval informasi.",
-      "dataset_dan_evaluasi": "Data dikumpulkan dari siswa pendidikan menengah atas melalui survei (kuantitatif) dan wawancara semi-terstruktur (kualitatif). Evaluasi berfokus pada literasi AI, strategi prompting, dan persepsi kegunaan konten yang dihasilkan.",
-      "hasil_utama": "Siswa secara luas mengadopsi ChatGPT untuk mendukung pemahaman konsep STEM (terutama biologi). Meskipun pengetahuan teknis tentang AI terbatas, siswa mampu mengembangkan strategi prompting yang efektif untuk memitigasi halusinasi AI. Pengetahuan konten subjek (content knowledge) ditemukan lebih krusial daripada literasi AI teknis dalam mengevaluasi kualitas output.",
-      "research_gap_keterbatasan": "Penelitian ini terbatas pada persepsi siswa dan belum menguji dampak jangka panjang terhadap hasil belajar atau keterampilan berpikir kritis. Terdapat kebutuhan mendesak untuk studi empiris lebih lanjut mengenai peran LLM dalam mendukung pembelajaran STEM yang terstruktur di tingkat menengah atas."
+      "name_paper": "Valeri, F., Nilsson, P., & Cederqvist, A.-M. (2025) - Exploring students’ experience of ChatGPT in STEM education",
+      "doi": "https://doi.org/10.1016/j.caeai.2024.100360",
+      "problem": "Kurangnya literatur mengenai penggunaan Large Language Model (LLM) chatbots seperti ChatGPT dalam konteks pendidikan STEM di tingkat sekolah menengah atas (upper secondary education), serta perlunya memahami persepsi dan strategi penggunaan siswa terhadap teknologi tersebut.",
+      "metode": "Pendekatan mixed methods dengan Explanatory Sequential Design yang terdiri dari dua fase: survei kuantitatif (close-ended questions) diikuti oleh wawancara semi-terstruktur (semi-structured interviews).",
+      "dataset": "Partisipan terdiri dari siswa sekolah menengah atas. Data dikumpulkan melalui survei dan wawancara mendalam dengan 12 siswa. Kerangka analisis menggunakan model literasi AI yang diadaptasi dari Kong et al. (2024) dan Annapureddy et al. (2024).",
+      "temuan": "ChatGPT diadopsi secara luas dalam mata pelajaran STEM, terutama biologi, untuk mendukung pemahaman konsep. Siswa menunjukkan strategi prompting yang efektif untuk menghasilkan konten relevan dan mengatasi halusinasi AI, meskipun pengetahuan teknis mereka tentang AI terbatas. Pengetahuan konten (content knowledge) subjek dianggap sebagai faktor krusial dalam mengevaluasi kualitas output AI.",
+      "keterbatasan": "Penelitian ini bersifat eksploratif dengan fokus pada pengalaman siswa di tingkat sekolah menengah atas, sehingga temuan tidak ditujukan untuk inferensi kausal atau prediktif yang luas.",
+      "future_work": "Diperlukan lebih banyak studi empiris mengenai peran LLM chatbots dalam mata pelajaran STEM di tingkat sekolah menengah atas untuk mengembangkan praktik pendidikan yang mendukung siswa dalam menavigasi subjek kompleks, serta eksplorasi lebih lanjut mengenai dampak penggunaan AI terhadap keterampilan berpikir kritis."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4052,
+      "candidates_tokens": 484,
+      "total_tokens": 4536
     },
-    "cached_at": "2026-10-28T17:53:37.808586"
+    "cached_at": "2026-10-28T18:53:18.674097"
   },
   "c4e4fd920aa78d14036b167f3a9a3d7a28cf7f90ff54b5292c526c2ed7dd3263": {
     "filename": "How-ChatGPT-impacts-student-engagement-from-a-_2025_Computers-and-Education-.pdf",
     "row_data": {
       "no": 9,
       "filename": "How-ChatGPT-impacts-student-engagement-from-a-_2025_Computers-and-Education-.pdf",
-      "penulis_tahun": "Heung & Chiu, 2025",
-      "judul_artikel": "How ChatGPT impacts student engagement from a systematic review and meta-analysis study",
-      "publisher_jurnal": "Elsevier (Computers and Education: Artificial Intelligence)",
-      "domain_subtopik": "Edukasi dan Kesehatan Remaja - Integrasi Generative AI dalam Pembelajaran",
-      "masalah_penelitian": "Adanya hasil empiris yang beragam mengenai dampak penggunaan ChatGPT terhadap keterlibatan (engagement) siswa secara perilaku, kognitif, dan emosional dalam lingkungan pendidikan.",
-      "arsitektur_metode_rag": "Studi ini merupakan Systematic Literature Review (SLR) dan meta-analisis yang menggunakan metode PRISMA untuk mensintesis data dari 17 studi empiris, bukan sistem RAG teknis, namun mengidentifikasi peran AI dalam tutoring personal dan bantuan teknis.",
-      "dataset_dan_evaluasi": "Dataset terdiri dari 17 studi empiris dengan total 1735 siswa; evaluasi menggunakan model random effects untuk menghitung effect size (small, medium, large) dan instrumen MERSQI untuk menilai kualitas metodologi.",
-      "hasil_utama": "ChatGPT terbukti efektif meningkatkan keterlibatan siswa dengan effect size medium pada aspek perilaku dan emosional, serta effect size besar pada aspek kognitif dibandingkan pembelajaran non-ChatGPT.",
-      "research_gap_keterbatasan": "Penelitian terbatas pada lingkungan eksperimental yang dikontrol peneliti sehingga kurang mencerminkan lingkungan belajar autentik; terdapat potensi risiko disengagement siswa yang belum dieksplorasi secara mendalam."
+      "name_paper": "Heung, Y. M. E., & Chiu, T. K. F. (2025) - How ChatGPT impacts student engagement from a systematic review and meta-analysis study",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100361",
+      "problem": "Adanya hasil empiris yang beragam mengenai dampak penggunaan ChatGPT terhadap keterlibatan siswa (student engagement) baik dari aspek perilaku, kognitif, maupun emosional dalam lingkungan pendidikan.",
+      "metode": "Systematic Literature Review (SLR) dan meta-analisis dengan menggunakan protokol PRISMA untuk menyeleksi dan menganalisis data, serta model random effects untuk menghitung effect size.",
+      "dataset": "17 studi empiris dengan total 1735 siswa yang dikumpulkan dari empat basis data akademik; instrumen evaluasi mencakup pengukuran sikap, persepsi, pengetahuan, dan keterampilan.",
+      "temuan": "ChatGPT terbukti efektif dalam meningkatkan keterlibatan siswa dengan effect size menengah pada keterlibatan perilaku dan emosional, serta effect size besar pada keterlibatan kognitif. ChatGPT berperan sebagai tutor personal, asisten teknis/pemrograman, serta alat kolaborasi dan pembuatan konten.",
+      "keterbatasan": "Studi terbatas pada literatur yang dipublikasikan di jurnal (mengabaikan grey literature), potensi bias dalam pemilihan kata kunci pencarian, serta ketergantungan pada lingkungan eksperimental yang dikontrol peneliti sehingga mungkin tidak mencerminkan lingkungan belajar autentik.",
+      "future_work": "Penelitian selanjutnya disarankan untuk fokus pada jenjang pendidikan spesifik, mengeksplorasi potensi disengagement yang disebabkan oleh ChatGPT, serta memperluas cakupan literatur termasuk karya yang tidak dipublikasikan secara komersial."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4192,
+      "candidates_tokens": 448,
+      "total_tokens": 4640
     },
-    "cached_at": "2026-10-28T17:53:37.834502"
+    "cached_at": "2026-10-28T18:53:21.093961"
   },
   "ef4ead78f853ed2055c3ab469e9d1845f03dd3d6d47bcd650d419b794e5f1d7e": {
     "filename": "Mental-health--personality--and-cross-addictions-as-predic_2026_Addictive-Be.pdf",
     "row_data": {
       "no": 10,
       "filename": "Mental-health--personality--and-cross-addictions-as-predic_2026_Addictive-Be.pdf",
-      "penulis_tahun": "Zarate et al., 2026",
-      "judul_artikel": "Mental health, personality, and cross-addictions as predictors of social media addiction: a machine learning longitudinal study",
-      "publisher_jurnal": "Addictive Behaviors",
-      "domain_subtopik": "Edukasi Kesehatan Remaja - Kecanduan Media Sosial (Problematic Social Media Use)",
-      "masalah_penelitian": "Inkonsistensi temuan mengenai prediktor risiko kecanduan media sosial (PSMU) dan perlunya identifikasi dini individu berisiko tinggi menggunakan pendekatan machine learning.",
-      "arsitektur_metode_rag": "Supervised Machine Learning (Random Forests, Naïve Bayes, LASSO, SVM, Logistic Regression) dengan framework tidymodels, grid search untuk hyperparameter tuning, dan SMOTE untuk menangani class imbalance.",
-      "dataset_dan_evaluasi": "276 pengguna media sosial dewasa (18-62 tahun); instrumen Bergen Social Media Addiction Scale (BSMAS); metrik evaluasi meliputi accuracy, F1 score, ROC-AUC, precision, dan recall.",
-      "hasil_utama": "Kecemasan (anxiety), coping berbasis disengagement, dan tingkat agreeableness yang rendah merupakan prediktor utama risiko PSMU. Penggunaan SMOTE terbukti membantu menyeimbangkan dataset untuk meningkatkan generalisasi model.",
-      "research_gap_keterbatasan": "Keterbatasan meliputi penggunaan data self-report yang rentan bias, kurangnya kriteria diagnostik standar untuk PSMU, serta reliabilitas rendah pada beberapa instrumen (OGD-Q dan CDS-5). Peluang riset lanjutan mencakup integrasi variabel Fear of Missing Out (FOMO) dan penggunaan sampel yang lebih beragam."
+      "name_paper": "Zarate, D., Jarrad, J., Stavropoulos, V., Conkey-Morrison, C., & Hunt, B. (2026) - Mental health, personality, and cross-addictions as predictors of social media addiction: a machine learning longitudinal study",
+      "doi": "https://doi.org/10.1016/j.addbeh.2025.108369",
+      "problem": "Ketidakkonsistenan temuan penelitian terdahulu mengenai prediktor Problematic Social Media Use (PSMU) dan perlunya pendekatan prediktif berbasis Machine Learning untuk mengidentifikasi individu dengan risiko klinis tinggi.",
+      "metode": "Supervised Machine Learning (Random Forests, Naïve Bayes, LASSO, SVM, dan Logistic Regression) dengan framework tidymodels, 10-fold cross-validation, hyperparameter tuning (grid search), dan penanganan ketidakseimbangan kelas menggunakan Synthetic Minority Oversampling Technique (SMOTE).",
+      "dataset": "276 pengguna media sosial dewasa (usia 18–62 tahun) dari Australia, UK, Selandia Baru, dan Kanada. Instrumen utama: Bergen Social Media Addiction Scale (BSMAS) dengan cut-off 19 dan 24. Metrik evaluasi: Akurasi, F1 score, dan ROC-AUC.",
+      "temuan": "Kecemasan (anxiety), coping berbasis disengagement, dan tingkat agreeableness yang rendah merupakan prediktor signifikan bagi risiko PSMU, bahkan sebelum skor BSMAS mencapai ambang batas klinis.",
+      "keterbatasan": "Ketiadaan kriteria diagnostik standar untuk PSMU, ketergantungan pada data self-report yang rentan terhadap bias (recall dan social desirability), serta rendahnya konsistensi internal pada beberapa instrumen (OGD-Q dan CDS-5).",
+      "future_work": "Pengembangan model prediktif dengan menyertakan variabel psikososial tambahan seperti Fear of Missing Out (FOMO), penggunaan sampel yang lebih beragam secara budaya, serta penerapan desain riset yang lebih sensitif terhadap konteks penggunaan media sosial."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4116,
+      "candidates_tokens": 521,
+      "total_tokens": 4637
     },
-    "cached_at": "2026-10-28T17:53:37.840521"
+    "cached_at": "2026-10-28T18:53:23.620600"
   },
   "59f3b70ac31dc999b32d4d81063de60f7241645f8ddc554d79ba1b98276c97cf": {
     "filename": "Objective-and-perceived-smartphone-use-volume--addicti_2026_Addictive-Behavi.pdf",
     "row_data": {
       "no": 11,
       "filename": "Objective-and-perceived-smartphone-use-volume--addicti_2026_Addictive-Behavi.pdf",
-      "penulis_tahun": "Objective-and-perceived-smartphone-use-volume--addicti 2026 Addictive-Behavi",
-      "judul_artikel": "Objective-and-perceived-smartphone-use-volume--addicti 2026 Addictive-Behavi",
-      "publisher_jurnal": "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-      "domain_subtopik": "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
-      "masalah_penelitian": "Tingginya risiko kecanduan perilaku/zat pada remaja dan keterbatasan akses konseling edukatif yang akurat serta bebas halusinasi.",
-      "arsitektur_metode_rag": "Retrieval-Augmented Generation (RAG) dengan Dense/Hybrid Retriever dan kurasi basis pengetahuan medis-edukasi remaja.",
-      "dataset_dan_evaluasi": "Evaluasi menggunakan dataset tanya-jawab kesehatan remaja dengan metrik akurasi faktual, Faithfulness, dan kuesioner keterbacaan siswa.",
-      "hasil_utama": "Meningkatkan akurasi faktual respons edukasi dan menurunkan tingkat halusinasi dibandingkan baseline LLM standar.",
-      "research_gap_keterbatasan": "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas."
+      "name_paper": "Szabo, A., Jarai, R., Tabi, N., Montvai, D., Bulgay, C., Podstawski, R., & Somogyi, A. (2026) - Objective and perceived smartphone use volume, addiction risk, and deprivation feelings",
+      "doi": "https://doi.org/10.1016/j.abrep.2026.100750",
+      "problem": "Adanya ketidaksesuaian antara data penggunaan smartphone objektif dengan persepsi subjektif pengguna, serta kurangnya pemahaman mengenai hubungan antara volume penggunaan, perasaan deprivasi (smartphone deprivation feelings), dan risiko kecanduan smartphone (RSA).",
+      "metode": "Studi kuantitatif dengan desain cross-sectional menggunakan analisis mediasi (mediation analysis) melalui modul jaspSem (lavaan) untuk memodelkan hubungan antara penggunaan objektif, penggunaan perseptual, RSA, dan perasaan deprivasi.",
+      "dataset": "100 pengguna iPhone (usia rata-rata 24,37 tahun) yang menyediakan data tangkapan layar 'Screen Time' selama delapan hari berturut-turut. Instrumen mencakup data log objektif dan skala psikometrik untuk RSA dan deprivasi.",
+      "temuan": "Perasaan deprivasi dan persepsi penggunaan smartphone memiliki korelasi yang lebih kuat dengan skor risiko kecanduan (RSA) dibandingkan dengan volume penggunaan objektif yang tercatat secara teknis.",
+      "keterbatasan": "Desain cross-sectional membatasi inferensi kausal, ukuran sampel yang relatif kecil (N=100) membatasi generalisasi, homogenitas budaya sampel, serta keterbatasan pada pengguna iOS saja yang tidak mencerminkan ekosistem smartphone secara luas.",
+      "future_work": "Perlunya pengembangan intervensi berbasis kognitif-behavioral dan metakognitif yang menargetkan keyakinan pengguna terhadap penggunaan perangkat dan toleransi terhadap ketidakhadiran perangkat, serta uji coba intervensi berupa periode bebas ponsel (phone-free periods) yang dikombinasikan dengan pelatihan keterampilan koping."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4261,
+      "candidates_tokens": 513,
+      "total_tokens": 4774
     },
-    "cached_at": "2026-10-28T17:53:37.845608"
+    "cached_at": "2026-10-28T18:53:26.216838"
   },
   "4bc9081e50abf398b912edb0b952755a03816e302e434cacc7381117596a7bdd": {
     "filename": "Seeking-pleasure-or-seeking-compensation--a-dual-pathwa_2026_Addictive-Behav.pdf",
     "row_data": {
       "no": 12,
       "filename": "Seeking-pleasure-or-seeking-compensation--a-dual-pathwa_2026_Addictive-Behav.pdf",
-      "penulis_tahun": "Seeking-pleasure-or-seeking-compensation--a-dual-pathwa 2026 Addictive-Behav",
-      "judul_artikel": "Seeking-pleasure-or-seeking-compensation--a-dual-pathwa 2026 Addictive-Behav",
-      "publisher_jurnal": "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-      "domain_subtopik": "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
-      "masalah_penelitian": "Tingginya risiko kecanduan perilaku/zat pada remaja dan keterbatasan akses konseling edukatif yang akurat serta bebas halusinasi.",
-      "arsitektur_metode_rag": "Retrieval-Augmented Generation (RAG) dengan Dense/Hybrid Retriever dan kurasi basis pengetahuan medis-edukasi remaja.",
-      "dataset_dan_evaluasi": "Evaluasi menggunakan dataset tanya-jawab kesehatan remaja dengan metrik akurasi faktual, Faithfulness, dan kuesioner keterbacaan siswa.",
-      "hasil_utama": "Meningkatkan akurasi faktual respons edukasi dan menurunkan tingkat halusinasi dibandingkan baseline LLM standar.",
-      "research_gap_keterbatasan": "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas."
+      "name_paper": "Klein, L., Brand, M., & Wegmann, E. (2026) - Seeking pleasure or seeking compensation: a dual-pathway model of problematic social networks use",
+      "doi": "https://doi.org/10.1016/j.abrep.2026.100720",
+      "problem": "Kurangnya pemahaman mengenai mekanisme psikologis yang mendasari penggunaan media sosial yang bermasalah (PSNU), khususnya perbedaan antara penggunaan intensif yang non-patologis dengan penggunaan yang bersifat adiktif, serta bagaimana variabel predisposisi (motif, kepribadian, stres) berinteraksi dalam model dual-pathway.",
+      "metode": "Structural Equation Modeling (SEM) untuk menguji model dual-pathway (reward-driven dan fear-driven) berdasarkan kerangka kerja I-PACE.",
+      "dataset": "Sampel acak dari populasi umum di Jerman (N=306; 249 perempuan, 55 laki-laki, 2 non-biner; usia 16-64 tahun). Instrumen mencakup kriteria DSM-5 untuk gangguan gaming yang dimodifikasi untuk media sosial, serta kuesioner terkait motif penggunaan, kepribadian, dan strategi coping.",
+      "temuan": "Penelitian mengonfirmasi bahwa durasi penggunaan media sosial tidak selalu berkorelasi dengan tingkat keparahan gejala (symptom severity). Terdapat perbedaan mekanisme antara jalur pencarian kesenangan (reward-driven) dan jalur kompensasi (fear-driven) dalam memprediksi penggunaan media sosial yang bermasalah.",
+      "keterbatasan": "Ketidakseimbangan distribusi gender (dominasi perempuan), ukuran sampel yang berada di bawah ambang batas rasio N:q yang disarankan, serta penggunaan data laporan mandiri (self-report) tanpa integrasi data penggunaan objektif yang komprehensif.",
+      "future_work": "Penelitian selanjutnya disarankan untuk mengintegrasikan data penggunaan objektif (objective usage data) guna mendapatkan gambaran intensitas yang lebih akurat, melakukan studi longitudinal untuk melihat stabilitas mekanisme reinforcement dari waktu ke waktu, serta memperluas identifikasi variabel predisposisi spesifik seperti Fear of Missing Out (FoMO) dan integrasi sosial."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4400,
+      "candidates_tokens": 541,
+      "total_tokens": 4941
     },
-    "cached_at": "2026-10-28T17:53:37.851516"
+    "cached_at": "2026-10-28T18:53:28.561370"
   },
   "f9a1aacce74a347b5aa4d69b54cefd58d6c4dd8728bf278245e51d8ff1a1840f": {
     "filename": "Systematically-visualizing-ChatGPT-used-in-higher-edu_2025_Computers-and-Edu.pdf",
     "row_data": {
       "no": 13,
       "filename": "Systematically-visualizing-ChatGPT-used-in-higher-edu_2025_Computers-and-Edu.pdf",
-      "penulis_tahun": "Systematically-visualizing-ChatGPT-used-in-higher-edu 2025 Computers-and-Edu",
-      "judul_artikel": "Systematically-visualizing-ChatGPT-used-in-higher-edu 2025 Computers-and-Edu",
-      "publisher_jurnal": "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-      "domain_subtopik": "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
-      "masalah_penelitian": "Tingginya risiko kecanduan perilaku/zat pada remaja dan keterbatasan akses konseling edukatif yang akurat serta bebas halusinasi.",
-      "arsitektur_metode_rag": "Retrieval-Augmented Generation (RAG) dengan Dense/Hybrid Retriever dan kurasi basis pengetahuan medis-edukasi remaja.",
-      "dataset_dan_evaluasi": "Evaluasi menggunakan dataset tanya-jawab kesehatan remaja dengan metrik akurasi faktual, Faithfulness, dan kuesioner keterbacaan siswa.",
-      "hasil_utama": "Meningkatkan akurasi faktual respons edukasi dan menurunkan tingkat halusinasi dibandingkan baseline LLM standar.",
-      "research_gap_keterbatasan": "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas."
+      "name_paper": "Ma, T. (2025) - Systematically visualizing ChatGPT used in higher education: Publication trend, disciplinary domains, research themes, adoption and acceptance",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100336",
+      "problem": "Kurangnya pemahaman komprehensif mengenai lanskap riset penggunaan ChatGPT di pendidikan tinggi, serta kebutuhan untuk mengidentifikasi tren publikasi, topik utama, dan model adopsi teknologi AI generatif di lingkungan akademik.",
+      "metode": "Systematic Literature Review (SLR) menggunakan protokol PRISMA, dikombinasikan dengan analisis bibliometrik menggunakan perangkat lunak VOSviewer dan CitNetExplorer.",
+      "dataset": "Sebanyak 234 artikel relevan yang diseleksi dari database Web of Science dan Scopus dengan periode publikasi 30 November 2022 hingga 14 Maret 2024.",
+      "temuan": "ChatGPT memiliki dampak revolusioner dalam pendidikan tinggi, terutama dalam efisiensi penilaian (assessment), peningkatan pendekatan pengajaran, dan pengembangan keterampilan berpikir kritis. Ditemukan pula pentingnya literasi AI sebagai strategi mitigasi risiko.",
+      "keterbatasan": "Penelitian hanya berfokus pada ChatGPT sebagai representasi LLM tunggal, mengabaikan kompetitor lain seperti Google Bard, serta kurangnya analisis kuantitatif mendalam untuk menjelaskan rasionalitas fenomena yang ditemukan.",
+      "future_work": "Diperlukan studi meta-analisis dengan metode yang lebih ketat, analisis data penggunaan (usage data) untuk mengukur dampak nyata terhadap hasil belajar siswa, serta perbandingan performa ChatGPT dengan model AI generatif lainnya."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4217,
+      "candidates_tokens": 427,
+      "total_tokens": 4644
     },
-    "cached_at": "2026-10-28T17:53:37.861434"
+    "cached_at": "2026-10-28T18:53:30.628324"
   },
   "0d3eb71e1bf0fce273e496852d7c7fec5a15352f47d587a97ffeb7352b15afe8": {
     "filename": "Technological-self-efficacy-and-sense-of-coheren_2025_Computers-and-Educatio.pdf",
     "row_data": {
       "no": 14,
       "filename": "Technological-self-efficacy-and-sense-of-coheren_2025_Computers-and-Educatio.pdf",
-      "penulis_tahun": "Technological-self-efficacy-and-sense-of-coheren 2025 Computers-and-Educatio",
-      "judul_artikel": "Technological-self-efficacy-and-sense-of-coheren 2025 Computers-and-Educatio",
-      "publisher_jurnal": "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-      "domain_subtopik": "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
-      "masalah_penelitian": "Tingginya risiko kecanduan perilaku/zat pada remaja dan keterbatasan akses konseling edukatif yang akurat serta bebas halusinasi.",
-      "arsitektur_metode_rag": "Retrieval-Augmented Generation (RAG) dengan Dense/Hybrid Retriever dan kurasi basis pengetahuan medis-edukasi remaja.",
-      "dataset_dan_evaluasi": "Evaluasi menggunakan dataset tanya-jawab kesehatan remaja dengan metrik akurasi faktual, Faithfulness, dan kuesioner keterbacaan siswa.",
-      "hasil_utama": "Meningkatkan akurasi faktual respons edukasi dan menurunkan tingkat halusinasi dibandingkan baseline LLM standar.",
-      "research_gap_keterbatasan": "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas."
+      "name_paper": "Herzallah, A. M., & Makaldy, R. (2025) - Technological self-efficacy and sense of coherence: Key drivers in teachers’ AI acceptance and adoption",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100377",
+      "problem": "Kurangnya pemahaman mengenai faktor psikologis yang memengaruhi penerimaan dan adopsi Artificial Intelligence (AI) oleh guru di sistem pendidikan Israel, serta tantangan dalam integrasi teknologi di tengah kebutuhan pengembangan profesional.",
+      "metode": "Pendekatan kuantitatif menggunakan kerangka kerja Technology Acceptance Model (TAM) dengan analisis statistik melalui perangkat lunak SPSS versi 29.",
+      "dataset": "Sampel terdiri dari 200 guru di Israel (68,5% Arab, 31,5% Yahudi) yang dikumpulkan melalui kuesioner daring dengan teknik stratified convenience dan snowball sampling.",
+      "temuan": "Terdapat korelasi positif signifikan antara perceived usefulness, perceived ease of use, dan sikap terhadap AI. Technological self-efficacy (TSE) terbukti memediasi hubungan antara sikap terhadap AI dan niat adopsi, sementara sense of coherence (SOC) memediasi hubungan antara TSE dan sikap guru terhadap AI.",
+      "keterbatasan": "Komposisi sampel yang tidak proporsional (dominasi guru Arab) membatasi generalisasi temuan ke populasi yang lebih luas, serta adanya variabel pengganggu (confounding variables) akibat gangguan sosial-politik selama periode pengumpulan data (Oktober 2023).",
+      "future_work": "Diperlukan penelitian longitudinal untuk memvalidasi temuan, studi lintas budaya untuk menguji universalitas mekanisme psikologis, serta pengembangan strategi integrasi AI yang berfokus pada kesejahteraan dan kesiapan psikologis pendidik melalui program pengembangan profesional yang berkelanjutan."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 4442,
+      "candidates_tokens": 468,
+      "total_tokens": 4910
     },
-    "cached_at": "2026-10-28T17:53:37.864645"
+    "cached_at": "2026-10-28T18:53:33.495161"
   },
   "a6fe89b76a95a3a4d43f3143363fc62d0aaba11c15711925935ffbd2ac1d3a4e": {
     "filename": "Understanding-AI-adoption-among-secondary-ed_2025_Computers-and-Education--A.pdf",
     "row_data": {
       "no": 15,
       "filename": "Understanding-AI-adoption-among-secondary-ed_2025_Computers-and-Education--A.pdf",
-      "penulis_tahun": "Understanding-AI-adoption-among-secondary-ed 2025 Computers-and-Education--A",
-      "judul_artikel": "Understanding-AI-adoption-among-secondary-ed 2025 Computers-and-Education--A",
-      "publisher_jurnal": "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-      "domain_subtopik": "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
-      "masalah_penelitian": "Tingginya risiko kecanduan perilaku/zat pada remaja dan keterbatasan akses konseling edukatif yang akurat serta bebas halusinasi.",
-      "arsitektur_metode_rag": "Retrieval-Augmented Generation (RAG) dengan Dense/Hybrid Retriever dan kurasi basis pengetahuan medis-edukasi remaja.",
-      "dataset_dan_evaluasi": "Evaluasi menggunakan dataset tanya-jawab kesehatan remaja dengan metrik akurasi faktual, Faithfulness, dan kuesioner keterbacaan siswa.",
-      "hasil_utama": "Meningkatkan akurasi faktual respons edukasi dan menurunkan tingkat halusinasi dibandingkan baseline LLM standar.",
-      "research_gap_keterbatasan": "Belum mengintegrasikan adaptasi gaya bahasa psikologis/empatik remaja lokal, belum mendukung multimodalitas, serta uji longitudinal perubahan perilaku masih terbatas."
+      "name_paper": "López-Costa, M., Donate-Beby, B., Cabrera-Lanzo, N., & Maina, M. F. (2025) - Understanding AI adoption among secondary education teachers: A PLS-SEM approach",
+      "doi": "https://doi.org/10.1016/j.caeai.2025.100416",
+      "problem": "Kurangnya pemahaman mengenai bagaimana kompetensi literasi data, pengetahuan AI, dan persepsi guru sekolah menengah memengaruhi adopsi teknologi AI dalam praktik pendidikan.",
+      "metode": "Partial Least Squares Structural Equation Modelling (PLS-SEM) untuk menganalisis hubungan kompleks antar variabel laten, didukung dengan Confirmatory Factor Analysis (CFA) untuk validasi model.",
+      "dataset": "Guru sekolah menengah di Catalonia, Spanyol. Instrumen menggunakan skala literasi data yang mencakup dimensi analitik pendidikan, pemecahan masalah, dan meta-learning. Metrik evaluasi meliputi koefisien jalur standar (β) dan nilai signifikansi (p-values).",
+      "temuan": "Model menjelaskan sekitar 30,5% varians dalam adopsi AI. Praktik data umum (General data practices) berkontribusi signifikan terhadap adopsi AI, sementara kompetensi manajemen data teknis (Applied Data Use) dan spesialisasi STEM tidak memiliki pengaruh langsung yang signifikan.",
+      "keterbatasan": "Desain penelitian bersifat cross-sectional yang hanya menangkap momen spesifik, sehingga tidak dapat menjelaskan perubahan tren adopsi AI secara dinamis dari waktu ke waktu.",
+      "future_work": "Penelitian lanjutan disarankan menggunakan desain longitudinal untuk memantau perubahan tren, serta memperluas model dengan mengeksplorasi faktor eksternal seperti kebijakan institusional, infrastruktur teknologi, dan dukungan organisasi."
     },
     "tokens_used": {
-      "prompt_tokens": 1600,
-      "candidates_tokens": 350,
-      "total_tokens": 1950
+      "prompt_tokens": 3859,
+      "candidates_tokens": 447,
+      "total_tokens": 4306
     },
-    "cached_at": "2026-10-28T17:53:37.873017"
+    "cached_at": "2026-10-28T18:53:36.042146"
   }
 }

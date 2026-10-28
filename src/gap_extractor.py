@@ -52,7 +52,7 @@ ASPECT_QUERIES = {
 }
 
 
-def extract_doi_from_pdf_or_text(pdf_path: Optional[Path], text: str) -> str:
+def extract_doi_from_pdf_or_text(pdf_path: Optional[Path] = None, text: str = "") -> str:
     """Mengekstrak tautan DOI resmi langsung dari halaman awal PDF atau teks."""
     if pdf_path and pdf_path.exists():
         try:
@@ -67,11 +67,17 @@ def extract_doi_from_pdf_or_text(pdf_path: Optional[Path], text: str) -> str:
         except Exception:
             pass
 
-    m2 = re.search(r'doi\.org/(10\.\d{4,9}/[^\s\"\'<>]+)', text, re.IGNORECASE)
-    if m2:
-        clean = m2.group(1).rstrip('.').rstrip(',').rstrip(';')
-        return f"https://doi.org/{clean}"
+    if text:
+        m2 = re.search(r'doi\.org/(10\.\d{4,9}/[^\s\"\'<>]+)', text, re.IGNORECASE)
+        if m2:
+            clean = m2.group(1).rstrip('.').rstrip(',').rstrip(';')
+            return f"https://doi.org/{clean}"
     return "N/A"
+
+
+def extract_doi_from_text(text: str) -> str:
+    """Alias pembantu untuk kompatibilitas ekstraksi DOI dari teks."""
+    return extract_doi_from_pdf_or_text(pdf_path=None, text=text)
 
 
 class LiteratureGapRAGPipeline:

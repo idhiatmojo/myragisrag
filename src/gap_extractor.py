@@ -1,6 +1,7 @@
 """
 Modul Ekstraktor Literature Gap Matrix & Generator Analisis Sintesis Paragraf
-Menggunakan Multi-Aspect RAG + Google Gemini Structured Output (Pydantic Schema).
+Menggunakan Multi-Aspect RAG + Multi-Model LLM (Gemini, Grok, Hugging Face, OpenAI, Ollama, dll.)
+dengan Structured Output Pydantic Schema.
 """
 
 import hashlib
@@ -9,9 +10,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional, Any
+
 from src.config import (
-    GEMINI_API_KEY,
-    GEMINI_LLM_MODEL,
     DOMAIN_TOPIC,
     TOP_K_PER_ASPECT,
     EXTRACTION_CACHE_FILE,
@@ -21,6 +21,7 @@ from src.config import (
 )
 from src.pdf_loader import DocumentChunk
 from src.vector_store import AcademicVectorStore
+from src.llm_provider import BaseLLMClient, get_llm_client
 
 
 def compute_file_sha256(path: Path) -> str:
@@ -84,25 +85,23 @@ class LiteratureGapRAGPipeline:
     """
     Pipeline utama RAG untuk mengekstrak Literature Gap Matrix dari kumpulan PDF
     dan menyusun analisis paragraf untuk usulan paper kelompok S2 AI.
+    Mendukung berbagai model LLM (Gemini, Grok, Hugging Face, OpenAI, Ollama, dll.)
     """
 
-    def __init__(self, vector_store: AcademicVectorStore):
+    def __init__(
+        self,
+        vector_store: AcademicVectorStore,
+        llm_client: Optional[BaseLLMClient] = None,
+    ):
         self.vector_store = vector_store
         self.token_tracker = TokenTracker()
         self.cache_file = EXTRACTION_CACHE_FILE
         self.cache: Dict[str, Any] = self._load_cache()
 
-        self.has_api_key = bool(
-            GEMINI_API_KEY and GEMINI_API_KEY != "masukkan_api_key_gemini_anda_disini"
-        )
-        self._client = None
-        if self.has_api_key:
-            try:
-                from google import genai
-                self._client = genai.Client(api_key=GEMINI_API_KEY)
-            except Exception as exc:
-                print(f"[WARN] Gagal menginisialisasi Gemini LLM Client: {exc}")
-                self.has_api_key = False
+        self.llm_client = llm_client or get_llm_client()
+        self.token_tracker.provider_name = self.llm_client.provider_name
+        self.token_tracker.model_name = self.llm_client.model_name
+        self.has_llm = self.llm_client.is_configured
 
     def _load_cache(self) -> Dict[str, Any]:
         """Membaca cache ekstraksi paper dari disk."""
@@ -163,7 +162,7 @@ class LiteratureGapRAGPipeline:
     ) -> PaperGapRow:
         """
         Ekstraktor pintar berbasis pola (Regex/Section Parser) dari konteks hasil retrieval RAG
-        apabila dijalankan secara offline tanpa API Key Gemini.
+        apabila dijalankan secara offline tanpa API Key aktif.
         """
         def extract_field(pattern: str, default: str) -> str:
             m = re.search(pattern, context, flags=re.IGNORECASE | re.DOTALL)
@@ -179,14 +178,6 @@ class LiteratureGapRAGPipeline:
         judul = extract_field(
             r"Title\s*[:\-]\s*(.+?)(?:\nAuthors?|\nPublisher|\n\n)",
             filename.replace(".pdf", "").replace("_", " "),
-        )
-        publisher = extract_field(
-            r"(?:Publisher|Journal|Published in)\s*[:\-]\s*(.+?)(?:\nDomain|\nAbstract|\n\n)",
-            "Jurnal Internasional Bereputasi (IEEE/Elsevier/Springer/JMIR)",
-        )
-        domain_sub = extract_field(
-            r"Domain\s*[:\-]\s*(.+?)(?:\nAbstract|\nProblem|\n\n)",
-            "Edukasi & Kesehatan Remaja (Kecanduan Smartphone / Merokok)",
         )
         masalah = extract_field(
             r"Problem Statement\s*[:\-]\s*(.+?)(?:\n\n|Methodology|RAG Architecture)",
@@ -233,16 +224,30 @@ class LiteratureGapRAGPipeline:
     ) -> PaperGapRow:
         """
         Mengekstrak 1 baris Literature Gap Matrix dari 1 artikel PDF.
-        Mendukung Smart Caching: jika artikel sudah pernah diekstrak sebelumnya dan
-        file tidak berubah (fingerprint SHA-256), langsung pakai hasil cache (0 token baru).
+        Mendukung Smart Caching yang peka terhadap model yang dipilih:
+        jika artikel sudah pernah diekstrak dengan model yang sama dan file tidak berubah,
+        langsung menggunakan hasil cache (0 token baru).
         """
         file_hash = None
         if pdf_path and pdf_path.exists():
             file_hash = compute_file_sha256(pdf_path)
 
-        # 1. Cek Smart Cache (Peringatan & Hasil Ekstraksi Sebelumnya)
-        if not force_refresh and file_hash and file_hash in self.cache:
-            cached_entry = self.cache[file_hash]
+        # 1. Cek Smart Cache (Peka terhadap Provider & Model)
+        model_cache_key = f"{file_hash}_{self.llm_client.provider_name}_{self.llm_client.model_name}"
+        hit_key = None
+
+        if not force_refresh and file_hash:
+            if model_cache_key in self.cache:
+                hit_key = model_cache_key
+            elif file_hash in self.cache:
+                cached_p = self.cache[file_hash].get("provider")
+                if cached_p == self.llm_client.provider_name or (
+                    not cached_p and self.llm_client.provider_name == "gemini"
+                ):
+                    hit_key = file_hash
+
+        if hit_key:
+            cached_entry = self.cache[hit_key]
             row_dict = cached_entry["row_data"].copy()
             row_dict["no"] = idx
 
@@ -259,7 +264,7 @@ class LiteratureGapRAGPipeline:
             self.token_tracker.cached_hits += 1
             self.token_tracker.estimated_saved_tokens += saved
             print(
-                f"      -> [{idx}] [CACHE HIT] {filename}\n"
+                f"      -> [{idx}] [CACHE HIT: {self.llm_client.provider_name.upper()}] {filename}\n"
                 f"           [OK] 0 token baru terpakai (hemat ~{saved:,} tokens dari cache sebelumnya)"
             )
             return PaperGapRow(**row_dict)
@@ -267,12 +272,12 @@ class LiteratureGapRAGPipeline:
         # 2. Jika Cache Miss: Jalankan Multi-Aspect RAG Retrieval & LLM Extraction
         retrieved_context = self.retrieve_context_for_paper(filename, paper_chunks)
 
-        if self.has_api_key and self._client is not None:
+        if self.has_llm:
             detected_doi = extract_doi_from_pdf_or_text(pdf_path, retrieved_context)
-            prompt = f"""Anda adalah peneliti S2 Artificial Intelligence yang sedang menyusun Systematic Literature Review (SLR) dan Literature Gap Matrix.
-Domain fokus: {DOMAIN_TOPIC}.
+            prompt = f"""Domain fokus: {DOMAIN_TOPIC}.
+Artikel: `{filename}`
 
-Berdasarkan potongan teks hasil retrieval dari artikel `{filename}` di bawah ini, ekstrak informasi secara akurat dan komprehensif ke dalam format JSON dengan 8 kolom utama:
+Berdasarkan potongan teks hasil retrieval dari artikel `{filename}` di bawah ini, ekstrak informasi secara akurat dan komprehensif ke dalam format JSON dengan 8 field utama:
 1. name_paper: Nama/Judul paper lengkap beserta penulis dan tahun (contoh: "Charkazi et al. (2026) - Agreement and classification performance...")
 2. doi: Tautan DOI lengkap (contoh: "{detected_doi}" jika valid, atau ekstrak dari teks artikel)
 3. problem: Masalah utama (Problem Statement) yang ingin dipecahkan oleh penelitian
@@ -287,21 +292,17 @@ Gunakan Bahasa Indonesia akademis yang padat, berbobot, dan jelas (istilah tekni
 KONTEKS ARTIKEL ({filename}):
 {retrieved_context}
 """
-            try:
-                from google.genai import types
-                response = self._client.models.generate_content(
-                    model=GEMINI_LLM_MODEL,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        response_mime_type="application/json",
-                        response_schema=PaperGapRow,
-                        temperature=0.1,
-                    ),
-                )
-                meta = getattr(response, "usage_metadata", None)
-                p_tok = getattr(meta, "prompt_token_count", 0) or 0
-                c_tok = getattr(meta, "candidates_token_count", 0) or 0
-                t_tok = getattr(meta, "total_token_count", 0) or (p_tok + c_tok)
+            row, tokens = self.llm_client.generate_structured(
+                prompt=prompt,
+                schema_cls=PaperGapRow,
+                system_prompt="Anda adalah peneliti S2 Artificial Intelligence yang sedang menyusun Systematic Literature Review (SLR) dan Literature Gap Matrix.",
+                temperature=0.1,
+            )
+
+            if row is not None:
+                p_tok = tokens.get("prompt_tokens", 0)
+                c_tok = tokens.get("candidate_tokens", 0)
+                t_tok = tokens.get("total_tokens", p_tok + c_tok)
 
                 self.token_tracker.prompt_tokens += p_tok
                 self.token_tracker.candidate_tokens += c_tok
@@ -309,34 +310,32 @@ KONTEKS ARTIKEL ({filename}):
                 self.token_tracker.api_calls += 1
 
                 print(
-                    f"      -> [{idx}] [API CALL] {filename}\n"
+                    f"      -> [{idx}] [API CALL: {self.llm_client.provider_name.upper()} ({self.llm_client.model_name})] {filename}\n"
                     f"           [API] Token: Prompt={p_tok:,} | Output={c_tok:,} | Total={t_tok:,}"
                 )
 
-                data = json.loads(response.text)
-                data["no"] = idx
-                data["filename"] = filename
-                if detected_doi != "N/A" and (not data.get("doi") or "doi.org" not in data.get("doi", "")):
-                    data["doi"] = detected_doi
-                row = PaperGapRow(**data)
+                row.no = idx
+                row.filename = filename
+                if detected_doi != "N/A" and (not row.doi or "doi.org" not in row.doi):
+                    row.doi = detected_doi
 
                 # Simpan ke cache
                 if file_hash:
-                    self.cache[file_hash] = {
+                    cache_entry = {
                         "filename": filename,
+                        "provider": self.llm_client.provider_name,
+                        "model": self.llm_client.model_name,
                         "row_data": row.model_dump(),
-                        "tokens_used": {
-                            "prompt_tokens": p_tok,
-                            "candidates_tokens": c_tok,
-                            "total_tokens": t_tok,
-                        },
+                        "tokens_used": tokens,
                         "cached_at": datetime.now().isoformat(),
                     }
+                    self.cache[model_cache_key] = cache_entry
+                    self.cache[file_hash] = cache_entry
                     self._save_cache()
 
                 return row
-            except Exception as exc:
-                print(f"[WARN] Ekstraksi Gemini gagal pada {filename} ({exc}), menggunakan parser fallback.")
+            else:
+                print(f"[WARN] Ekstraksi {self.llm_client.provider_name} gagal pada {filename}, menggunakan parser fallback.")
 
         return self._heuristic_extract_from_context(idx, filename, retrieved_context)
 
@@ -351,9 +350,8 @@ KONTEKS ARTIKEL ({filename}):
             [r.model_dump() for r in gap_rows], indent=2, ensure_ascii=False
         )
 
-        if self.has_api_key and self._client is not None:
-            prompt = f"""Anda adalah mahasiswa S2 Artificial Intelligence yang sedang menyusun analisis Literature Gap Matrix untuk pengajuan proposal paper kelompok.
-Domain riset kelompok kami: {DOMAIN_TOPIC}.
+        if self.has_llm:
+            prompt = f"""Domain riset kelompok kami: {DOMAIN_TOPIC}.
 
 Berikut adalah hasil ekstraksi Literature Gap Matrix dari {len(gap_rows)} artikel ilmiah referensi:
 {matrix_json}
@@ -365,21 +363,17 @@ Buatlah analisis mendalam dalam bentuk paragraf akademis yang mengalir dengan ba
 4. Paragraf 4 (Usulan Paper Kelompok & Novelty): Rumuskan usulan paper kelompok kami yang secara spesifik menutup gap di atas (jelaskan nama arsitektur RAG yang diusulkan, komponen teknisnya, serta kontribusinya bagi edukasi pencegahan kecanduan smartphone dan rokok pada remaja).
 5. Usulan Judul Paper: Satu judul paper ilmiah standar jurnal Q1/konferensi internasional.
 """
-            try:
-                from google.genai import types
-                response = self._client.models.generate_content(
-                    model=GEMINI_LLM_MODEL,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        response_mime_type="application/json",
-                        response_schema=SynthesisAnalysis,
-                        temperature=0.25,
-                    ),
-                )
-                meta = getattr(response, "usage_metadata", None)
-                p_tok = getattr(meta, "prompt_token_count", 0) or 0
-                c_tok = getattr(meta, "candidates_token_count", 0) or 0
-                t_tok = getattr(meta, "total_token_count", 0) or (p_tok + c_tok)
+            synthesis, tokens = self.llm_client.generate_structured(
+                prompt=prompt,
+                schema_cls=SynthesisAnalysis,
+                system_prompt="Anda adalah mahasiswa S2 Artificial Intelligence yang sedang menyusun analisis Literature Gap Matrix untuk pengajuan proposal paper kelompok.",
+                temperature=0.25,
+            )
+
+            if synthesis is not None:
+                p_tok = tokens.get("prompt_tokens", 0)
+                c_tok = tokens.get("candidate_tokens", 0)
+                t_tok = tokens.get("total_tokens", p_tok + c_tok)
 
                 self.token_tracker.prompt_tokens += p_tok
                 self.token_tracker.candidate_tokens += c_tok
@@ -387,12 +381,12 @@ Buatlah analisis mendalam dalam bentuk paragraf akademis yang mengalir dengan ba
                 self.token_tracker.api_calls += 1
 
                 print(
-                    f"      -> [API CALL] Sintesis Paper Kelompok Selesai\n"
+                    f"      -> [API CALL: {self.llm_client.provider_name.upper()} ({self.llm_client.model_name})] Sintesis Paper Kelompok Selesai\n"
                     f"           [API] Token: Prompt={p_tok:,} | Output={c_tok:,} | Total={t_tok:,}"
                 )
-                return SynthesisAnalysis(**json.loads(response.text))
-            except Exception as exc:
-                print(f"[WARN] Sintesis Gemini gagal ({exc}), menggunakan generator sintesis akademis terstruktur.")
+                return synthesis
+            else:
+                print(f"[WARN] Sintesis {self.llm_client.provider_name} gagal, menggunakan generator sintesis akademis terstruktur.")
 
         # Fallback sintesis akademis yang merujuk langsung ke baris-baris di gap_rows
         citations = ", ".join([r.name_paper.split(" - ")[0] for r in gap_rows[:5]])

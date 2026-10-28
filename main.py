@@ -1,15 +1,29 @@
 """
 Main Entrypoint Pipeline RAG untuk Literature Gap Matrix (Tugas S2 AI)
 Domain: Edukasi & Kesehatan Remaja (Kecanduan Smartphone & Merokok/Vaping)
+Mendukung Multi-Model LLM: Google Gemini, xAI Grok, Hugging Face, OpenAI, Ollama, DeepSeek, dll.
 
 Cara Menjalankan:
+    # 1. Menjalankan sesuai pengaturan .env (default: LLM_PROVIDER di .env)
     python main.py
+
+    # 2. Menjalankan dengan override provider dari CLI
+    python main.py --provider grok
+    python main.py --provider huggingface --model meta-llama/Llama-3.1-70B-Instruct
+    python main.py --provider gemini --model gemini-2.5-flash
+    python main.py --provider openai --model gpt-4o-mini
+    python main.py --provider ollama --model llama3.1
+
+    # 3. Menjalankan ekstraksi ulang paksa (bypass cache)
+    python main.py --force-refresh
 """
 
+import argparse
 import sys
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
+
 from src.config import (
     PAPERS_DIR,
     OUTPUTS_DIR,
@@ -17,33 +31,55 @@ from src.config import (
     CHUNK_SIZE,
     CHUNK_OVERLAP,
     DOMAIN_TOPIC,
-    GEMINI_API_KEY,
-    GEMINI_LLM_MODEL,
     USE_GEMINI_EMBEDDINGS,
 )
 from src.sample_papers_generator import ensure_sample_papers_if_empty
 from src.pdf_loader import load_all_papers
 from src.vector_store import AcademicVectorStore
+from src.llm_provider import get_llm_client
 from src.gap_extractor import LiteratureGapRAGPipeline
 from src.report_exporter import export_all_outputs
 
 
+def parse_arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Pipeline RAG Literature Gap Matrix Multi-Model (S2 AI)"
+    )
+    parser.add_argument(
+        "--provider",
+        type=str,
+        default=None,
+        help="Pilih LLM Provider: gemini | grok | huggingface | openai | ollama | deepseek | openrouter | custom",
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="Nama model yang akan digunakan (misal: grok-2-latest, gemini-2.5-flash, meta-llama/Llama-3.1-70B-Instruct)",
+    )
+    parser.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="Paksa ekstraksi ulang PDF tanpa menggunakan cache lama",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_arguments()
+    llm_client = get_llm_client(provider=args.provider, model=args.model)
+
     print("=" * 78)
     print(" PIPELINE RAG - GENERATOR LITERATURE GAP MATRIX & ANALISIS PAPER (S2 AI)")
     print("=" * 78)
     print(f"Domain Fokus : {DOMAIN_TOPIC}")
-
-    has_key = bool(
-        GEMINI_API_KEY and GEMINI_API_KEY != "masukkan_api_key_gemini_anda_disini"
-    )
-    if has_key:
-        print(f"Mode LLM     : Google Gemini API ({GEMINI_LLM_MODEL}) + Hybrid Vector Search")
-    else:
-        print(
-            "Mode LLM     : Hybrid TF-IDF Vector Search + Academic Section Extractor "
-            "(Tambahkan GEMINI_API_KEY di file .env untuk aktivasi Gemini LLM penuh)"
-        )
+    print(f"Pilihan LLM  : {llm_client.provider_name.upper()} ({llm_client.model_name})")
+    print(f"Status Model : {llm_client.status_message}")
+    if not llm_client.is_configured:
+        print("              [INFO] Berjalan dalam mode Offline Fallback Heuristic Extractor.")
+        print("                     Setel API Key di file .env untuk hasil LLM generasi penuh.")
+    if args.force_refresh:
+        print("Mode Cache   : FORCE REFRESH (Mengabaikan cache hasil sebelumnya)")
     print("-" * 78)
 
     # 1. Pastikan ada PDF di folder data/papers/
@@ -75,8 +111,10 @@ def main() -> None:
     vector_store.index_chunks(all_chunks)
 
     # 4. Multi-Aspect Retrieval & Ekstraksi Gap Matrix per Paper
-    print("[3/4] Menjalankan Multi-Aspect RAG Retrieval & Smart Caching...")
-    pipeline = LiteratureGapRAGPipeline(vector_store=vector_store)
+    print(
+        f"[3/4] Menjalankan Multi-Aspect RAG Retrieval & Ekstraksi via {llm_client.provider_name.upper()}..."
+    )
+    pipeline = LiteratureGapRAGPipeline(vector_store=vector_store, llm_client=llm_client)
     gap_rows = []
     for idx, (filename, p_chunks) in enumerate(papers_dict.items(), start=1):
         pdf_path = PAPERS_DIR / filename
@@ -85,11 +123,14 @@ def main() -> None:
             filename=filename,
             paper_chunks=p_chunks,
             pdf_path=pdf_path,
+            force_refresh=args.force_refresh,
         )
         gap_rows.append(row)
 
     # 5. Sintesis Analisis Paragraf untuk Usulan Paper Kelompok
-    print("[4/4] Menghasilkan Sintesis Analisis Paragraf & Usulan Paper Kelompok...")
+    print(
+        f"[4/4] Menghasilkan Sintesis Analisis Paragraf & Usulan Paper Kelompok ({llm_client.provider_name.upper()})..."
+    )
     synthesis = pipeline.generate_synthesis_analysis(gap_rows)
 
     # 6. Ekspor semua hasil (termasuk metrik penggunaan token & cache)
@@ -104,6 +145,7 @@ def main() -> None:
     print("\n" + "=" * 78)
     print(" RINGKASAN PENGGUNAAN TOKEN & SMART CACHING")
     print("=" * 78)
+    print(f" LLM Provider Digunakan   : {tracker.provider_name.upper()} ({tracker.model_name})")
     print(f" Total Artikel Diproses   : {len(gap_rows)} dokumen PDF")
     print(f" Cache Hit (Hasil Lama)   : {tracker.cached_hits} dokumen (0 token baru terpakai)")
     print(f" Panggilan API Baru       : {tracker.api_calls} request API")

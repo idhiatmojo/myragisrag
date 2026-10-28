@@ -261,6 +261,8 @@ def export_all_outputs(
     )
 
     if token_tracker:
+        provider_display = token_tracker.provider_name.upper() if token_tracker.provider_name else "LLM"
+        model_display = token_tracker.model_name or "Standard"
         md_lines.extend(
             [
                 "---",
@@ -269,9 +271,10 @@ def export_all_outputs(
                 "",
                 "| Metrik Evaluasi | Nilai | Penjelasan Teknis |",
                 "|---|---|---|",
+                f"| **Model & Provider LLM** | **{provider_display}** (`{model_display}`) | Model LLM yang digunakan untuk ekstraksi & analisis |",
                 f"| **Total Artikel Ilmiah** | {len(gap_rows)} dokumen | Seluruh PDF di folder `data/papers/` |",
                 f"| **Cache Hit (Pakai Ulang Hasil Sebelumnya)** | {token_tracker.cached_hits} dokumen | Diambil dari cache instan (0 token baru) |",
-                f"| **Panggilan API Baru** | {token_tracker.api_calls} panggilan | Request baru ke Google Gemini API |",
+                f"| **Panggilan API Baru** | {token_tracker.api_calls} panggilan | Request baru ke {provider_display} API |",
                 f"| **Token Input (Prompt)** | {token_tracker.prompt_tokens:,} tokens | Konteks chunks RAG & prompt skema |",
                 f"| **Token Output (Generasi)** | {token_tracker.candidate_tokens:,} tokens | Hasil ekstraksi JSON & analisis sintesis |",
                 f"| **Total Token Terpakai Run Ini** | **{token_tracker.total_tokens:,} tokens** | Total kuota API yang dikonsumsi |",

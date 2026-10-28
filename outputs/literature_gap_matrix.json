@@ -1,13 +1,6 @@
 {
   "domain": "Edukasi dan Kesehatan Remaja (Adolescent Health & Education) terkait Pencegahan/Intervensi Kecanduan Smartphone (Smartphone/Screen Addiction) dan Bahaya Merokok/Vaping (Smoking/E-Cigarette Cessation)",
-  "token_usage_stats": {
-    "prompt_tokens": 8196,
-    "candidate_tokens": 816,
-    "total_tokens": 9012,
-    "cached_hits": 15,
-    "api_calls": 1,
-    "estimated_saved_tokens": 69208
-  },
+  "token_usage_stats": {},
   "gap_matrix": [
     {
       "no": 1,

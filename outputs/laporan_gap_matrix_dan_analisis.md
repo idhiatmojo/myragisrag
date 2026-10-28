@@ -45,17 +45,3 @@ Kami mengusulkan pengembangan arsitektur 'Empathetic-Hybrid-RAG' (EH-RAG) yang m
 ## 3. Rekomendasi Judul Usulan Paper Kelompok
 
 > **"Empathetic-Hybrid-RAG: A Behavioral-Driven Framework for Adolescent Health Intervention in Smartphone Addiction and Smoking Cessation"**
-
----
-
-## 4. Statistik Penggunaan Token & Efisiensi Caching
-
-| Metrik Evaluasi | Nilai | Penjelasan Teknis |
-|---|---|---|
-| **Total Artikel Ilmiah** | 15 dokumen | Seluruh PDF di folder `data/papers/` |
-| **Cache Hit (Pakai Ulang Hasil Sebelumnya)** | 15 dokumen | Diambil dari cache instan (0 token baru) |
-| **Panggilan API Baru** | 1 panggilan | Request baru ke Google Gemini API |
-| **Token Input (Prompt)** | 8,196 tokens | Konteks chunks RAG & prompt skema |
-| **Token Output (Generasi)** | 816 tokens | Hasil ekstraksi JSON & analisis sintesis |
-| **Total Token Terpakai Run Ini** | **9,012 tokens** | Total kuota API yang dikonsumsi |
-| **Estimasi Token Berhasil Dihemat** | **~69,208 tokens** | Berkat mekanisme Smart Fingerprint Caching |
